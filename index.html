@@ -43,57 +43,56 @@
                     <th>Total</th>
                     <th>Modificateur</th>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Force</td>
                     <td><input id="base_for" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_for">0</td>
+                    <td id="racial_for" class="racial_bonus">0</td>
                     <td>=</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Dextérité</td>
                     <td><input id="base_dex" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_dex">0</td>
+                    <td id="racial_dex" class="racial_bonus">0</td>
                     <td>=</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Constitution</td>
                     <td><input id="base_con" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_con">0</td>
+                    <td id="racial_con" class="racial_bonus">0</td>
                     <td>=</td>
-                    <td>8</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Intelligence</td>
                     <td><input id="base_int" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_int">0</td>
+                    <td id="racial_int" class="racial_bonus">0</td>
                     <td>=</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Sagesse</td>
                     <td><input id="base_sag" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_sag">0</td>
+                    <td id="racial_sag" class="racial_bonus">0</td>
                     <td>=</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
                 </tr>
-                <tr>
+                <tr class="ligne_carac">
                     <td>Charisme</td>
                     <td><input id="base_cha" class="base_carac" type="number" value="8" min="8" max="15" /></td>
                     <td>+</td>
-                    <td id="racial_cha">0</td>
+                    <td id="racial_cha" class="racial_bonus">0</td>
                     <td>=</td>
                     <td class="base_plus_racial">8</td>
                     <td class="computed_bonus">-1</td>
@@ -139,12 +138,22 @@
             });
             jQuery('#race').on('change', function () {
                 if (jQuery(this).val() != '') {
+                    creationPerso.selectRace(jQuery(this).val());
                     if (typeof(races[jQuery(this).val()]['variants']) != 'undefined') {
+                        var listVariants = jQuery('#variant').html();
+                        for (i in races[jQuery(this).val()]['variants']) {
+                            listVariants += '<option value="' + i + '">' + races[jQuery(this).val()]['variants'][i].label + '</option>';
+                        }
+                        jQuery('#variant').html(listVariants);
+
                         jQuery('#variant').removeClass('hidden');
                     } else {
                         jQuery('#variant').addClass('hidden');
                     }
                 }
+            });
+            jQuery('.base_carac').on('input', function () {
+                creationPerso.reCalculateAttributes ();
             });
         });
     </script>
