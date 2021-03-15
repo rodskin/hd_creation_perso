@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"  data-key="jquery" ></script>
+    </head>
+    <body>
+        <form>
+            <input type="checkbox" id="acrobatie" /><label for="acrobatie">Acrobatie</label><br />
+            <input type="checkbox" id="arcanes" /><label for="arcanes">Arcanes</label><br />
+            <input type="checkbox" id="athletisme" /><label for="athletisme">Athlétisme</label><br />
+            <input type="checkbox" id="discretion" /><label for="discretion">Discrétion</label><br />
+            <input type="checkbox" id="dressage" /><label for="dressage">Dressage</label><br />
+            <input type="checkbox" id="escamotage" /><label for="escamotage">Escamotage</label><br />
+            <input type="checkbox" id="histoire" /><label for="histoire">Histoire</label><br />
+            <input type="checkbox" id="intimidation" /><label for="intimidation">Intimidation</label><br />
+            <input type="checkbox" id="investigation" /><label for="investigation">Investigation</label><br />
+            <input type="checkbox" id="medecine" /><label for="medecine">Médecine</label><br />
+            <input type="checkbox" id="nature" /><label for="nature">Nature</label><br />
+            <input type="checkbox" id="perception" /><label for="perception">Perception</label><br />
+            <input type="checkbox" id="perspicacite" /><label for="perspicacite">Perspicacité</label><br />
+            <input type="checkbox" id="persuasion" /><label for="persuasion">Persuasion</label><br />
+            <input type="checkbox" id="religion" /><label for="religion">Religion</label><br />
+            <input type="checkbox" id="representation" /><label for="representation">Représentation</label><br />
+            <input type="checkbox" id="supercherie" /><label for="supercherie">Supercherie</label><br />
+            <input type="checkbox" id="survie" /><label for="survie">Survie </label><br />
+            <button id="raz">RAZ</button>
+        </form>
+        <span id="result"></span>
+    <script type="text/javascript">
+        jQuery(':checkbox').change(function() {
+            jQuery('#result').html('');
+            var total = '';
+            $('input[type=checkbox]').each(function () {
+                if (this.checked) {
+                    total += '1;';
+                } else {
+                    total += '0;';
+                }
+            });
+            jQuery('#result').html(total.slice(0, -1));
+        });
+    </script>
+    </body>
+</html>

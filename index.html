@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"  data-key="jquery" ></script>
+        <script type="text/javascript"  src="./rules/niveau_puissance.js"></script>
+        <script type="text/javascript"  src="./rules/races.js"></script>
+        <script type="text/javascript"  src="./lib/functions.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="./css/style.css" data-key="style" />
+    </head>
+    <body>
+        <input type="text" placeholder="Nom du personnage" />
+        <fieldset>
+            <label>Niveau de puissance</label>
+            <select id="niveau_de_puissance">
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Race</label>
+            <select id="race">
+                <option value="">Choix de la race</option>
+            </select>
+            <select id="variant" class="hidden">
+                <option value="">Choix de la variante</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Historique</label>
+            <select id="historique"></select>
+        </fieldset>
+        <fieldset>
+            <label>Classe</label>
+            <select id="classe"></select>
+        </fieldset>
+        <div id="caracteristiques">
+            <table>
+                <tr>
+                    <th>Caractéristique</th>
+                    <th>Base</th>
+                    <th></th>
+                    <th>Bonus racial</th>
+                    <th></th>
+                    <th>Total</th>
+                    <th>Modificateur</th>
+                </tr>
+                <tr>
+                    <td>Force</td>
+                    <td><input id="base_for" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_for">0</td>
+                    <td>=</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+                <tr>
+                    <td>Dextérité</td>
+                    <td><input id="base_dex" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_dex">0</td>
+                    <td>=</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+                <tr>
+                    <td>Constitution</td>
+                    <td><input id="base_con" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_con">0</td>
+                    <td>=</td>
+                    <td>8</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+                <tr>
+                    <td>Intelligence</td>
+                    <td><input id="base_int" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_int">0</td>
+                    <td>=</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+                <tr>
+                    <td>Sagesse</td>
+                    <td><input id="base_sag" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_sag">0</td>
+                    <td>=</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+                <tr>
+                    <td>Charisme</td>
+                    <td><input id="base_cha" class="base_carac" type="number" value="8" min="8" max="15" /></td>
+                    <td>+</td>
+                    <td id="racial_cha">0</td>
+                    <td>=</td>
+                    <td class="base_plus_racial">8</td>
+                    <td class="computed_bonus">-1</td>
+                </tr>
+            </table>
+        </div>
+
+        <fieldset>
+            <legend>Compétences:</legend>
+            <table>
+                <tr><th>Maitrise</th><th>Compétence</th><th>Bonus</th></tr>
+                <tr><td><input type="checkbox" id="acrobatie" /></td><td><label for="acrobatie">Acrobatie</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="arcanes" /></td><td><label for="arcanes">Arcanes</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="athletisme" /></td><td><label for="athletisme">Athlétisme</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="discretion" /></td><td><label for="discretion">Discrétion</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="dressage" /></td><td><label for="dressage">Dressage</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="escamotage" /></td><td><label for="escamotage">Escamotage</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="histoire" /></td><td><label for="histoire">Histoire</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="intimidation" /></td><td><label for="intimidation">Intimidation</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="investigation" /></td><td><label for="investigation">Investigation</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="medecine" /></td><td><label for="medecine">Médecine</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="nature" /></td><td><label for="nature">Nature</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="perception" /></td><td><label for="perception">Perception</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="perspicacite" /></td><td><label for="perspicacite">Perspicacité</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="persuasion" /></td><td><label for="persuasion">Persuasion</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="religion" /></td><td><label for="religion">Religion</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="representation" /></td><td><label for="representation">Représentation</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="supercherie" /></td><td><label for="supercherie">Supercherie</label></td><td>0</td></tr>
+                <tr><td><input type="checkbox" id="survie" /></td><td><label for="survie">Survie </label></td><td>0</td></tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Capacités de race:</legend>
+            <div id="capacites"></div>
+        </fieldset>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(jQuery){
+            creationPerso.init();
+            jQuery('#niveau_de_puissance').on('change', function () {
+                creationPerso.selectPuissance(jQuery(this).val());
+            });
+            jQuery('#race').on('change', function () {
+                if (jQuery(this).val() != '') {
+                    if (typeof(races[jQuery(this).val()]['variants']) != 'undefined') {
+                        jQuery('#variant').removeClass('hidden');
+                    } else {
+                        jQuery('#variant').addClass('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+    </body>
+</html>
