@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <script type="text/javascript"  src="./vendors/jquery.min.js"  data-key="jquery" ></script>
         <script type="text/javascript"  src="./rules/niveau_puissance.js"></script>
+        <script type="text/javascript"  src="./rules/langues.js"></script>
         <script type="text/javascript"  src="./rules/competences.js"></script>
         <script type="text/javascript"  src="./rules/races.js"></script>
         <script type="text/javascript"  src="./rules/historiques.js"></script>
@@ -34,7 +35,9 @@
         </fieldset>
         <fieldset>
             <label>Classe</label>
-            <select id="classe"></select>
+            <select id="classe">
+                <option value="">Choix de la classe</option>
+            </select>
         </fieldset>
         <div id="caracteristiques">
             <table>
@@ -103,6 +106,13 @@
                 </tr>
             </table>
         </div>
+
+        <fieldset>
+            <legend>Langues</legend>
+            <table id="langues">
+            </table><br />
+            <div id="langues_disponibles">Langues à ajouter: <span id="langues_restantes">0</span>/<span id="langues_max">0</span></div>
+        </fieldset>
 
         <fieldset>
             <legend>Compétences:</legend>
