@@ -4,11 +4,13 @@
         <meta charset="UTF-8">
         <script type="text/javascript"  src="./vendors/jquery.min.js"  data-key="jquery" ></script>
         <script type="text/javascript"  src="./rules/niveau_puissance.js"></script>
+        <script type="text/javascript"  src="./rules/attributs.js"></script>
         <script type="text/javascript"  src="./rules/langues.js"></script>
         <script type="text/javascript"  src="./rules/bourse.js"></script>
         <script type="text/javascript"  src="./rules/competences.js"></script>
         <script type="text/javascript"  src="./rules/races.js"></script>
         <script type="text/javascript"  src="./rules/historiques.js"></script>
+        <script type="text/javascript"  src="./rules/classes.js"></script>
         <script type="text/javascript"  src="./lib/functions.js"></script>
         <link rel="stylesheet" type="text/css" media="all" href="./css/style.css" data-key="style" />
     </head>
@@ -41,70 +43,8 @@
             </select>
         </fieldset>
         <div id="caracteristiques">
-            <table>
-                <tr>
-                    <th>Caractéristique</th>
-                    <th>Base</th>
-                    <th></th>
-                    <th>Bonus racial</th>
-                    <th></th>
-                    <th>Total</th>
-                    <th>Modificateur</th>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Force</td>
-                    <td><input id="base_for" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_for" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_for">-1</td>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Dextérité</td>
-                    <td><input id="base_dex" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_dex" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_dex">-1</td>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Constitution</td>
-                    <td><input id="base_con" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_con" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_con">-1</td>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Intelligence</td>
-                    <td><input id="base_int" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_int" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_int">-1</td>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Sagesse</td>
-                    <td><input id="base_sag" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_sag" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_sag">-1</td>
-                </tr>
-                <tr class="ligne_carac">
-                    <td>Charisme</td>
-                    <td><input id="base_cha" class="base_carac" type="number" value="8" min="8" max="15" /></td>
-                    <td>+</td>
-                    <td id="racial_cha" class="racial_bonus">0</td>
-                    <td>=</td>
-                    <td class="base_plus_racial">8</td>
-                    <td class="computed_bonus" id="bonus_cha">-1</td>
-                </tr>
+            <table id="table_caracteristiques">
+                <tr><th>Caractéristique</th><th>Base</th><th></th><th>Bonus racial</th><th></th><th>Total</th><th>Modificateur</th></tr>
             </table>
         </div>
 
@@ -119,7 +59,8 @@
             <legend>Compétences:</legend>
             <table id="competences">
                 <tr id="competences_header"><th>Maitrise</th><th>Compétence</th><th>Bonus</th></tr>
-            </table>
+            </table><br />
+            <div id="competences_disponibles">Compétences à ajouter: <span id="competences_restantes">0</span>/<span id="competences_max">0</span></div>
         </fieldset>
 
         <fieldset>
@@ -193,7 +134,22 @@
             jQuery('#historique').on('change', function () {
                 creationPerso.selectHistorique(jQuery(this).val());
             });
-            jQuery('.checkbox_competence').on('change', function () {
+
+            jQuery('.checkbox_competence').on('change', function (e) {
+                var restantes_selected = parseInt(jQuery('#competences_restantes').html());
+                var max_selected = parseInt(jQuery('#competences_max').html()) + 1;
+                var checked = jQuery('.checkbox_competence:checked').not(':disabled').length;
+                if (max_selected == checked) {
+                    e.preventDefault();
+                    jQuery(this).prop('checked', false);
+                    return false; 
+                } else {
+                    if (jQuery(this).is(':checked')) {
+                        jQuery('#competences_restantes').html(restantes_selected -1);
+                    } else {
+                        jQuery('#competences_restantes').html(restantes_selected +1);
+                    }
+                }
                 creationPerso.recalculCompetences();
             });
         });

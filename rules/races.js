@@ -12,6 +12,7 @@ const races = {
             'elfe'
         ],
         'freeLanguages': 1,
+        'freeCompetences': 2,
         'racialAbilities': {
             0: "<strong>Vision dans le noir.</strong> Grâce à votre sang elfe, vous avez hérité d'une vision supérieure dans l'obscurité et dans la lumière faible. Dans un rayon de 18 mètres, vous pouvez voir dans une zone de lumière faible comme s'il s'agissait d'une lumière vive et dans l'obscurité comme s'il s'agissait d'une lumière faible. Par contre, vous ne distinguez pas les couleurs dans l'obscurité, seulement des nuances de gris.",
             1: "<strong>Ascendance féerique.</strong> Vous bénéficiez d'un avantage sur les jets de sauvegarde contre l'effet charmé et un effet magique ne peut pas vous plonger dans le sommeil.",
