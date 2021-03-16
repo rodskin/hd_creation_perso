@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript"  src="./vendors/jquery.min.js"  data-key="jquery" ></script>
+        <script type="text/javascript"  src="./vendors/jquery.modal.min.js"  data-key="jquery" ></script>
         <script type="text/javascript"  src="./rules/niveau_puissance.js"></script>
         <script type="text/javascript"  src="./rules/attributs.js"></script>
         <script type="text/javascript"  src="./rules/langues.js"></script>
@@ -13,6 +14,7 @@
         <script type="text/javascript"  src="./rules/classes.js"></script>
         <script type="text/javascript"  src="./lib/functions.js"></script>
         <link rel="stylesheet" type="text/css" media="all" href="./css/style.css" data-key="style" />
+        <link rel="stylesheet" type="text/css" media="all" href="./css/jquery.modal.min.css" data-key="style" />
     </head>
     <body>
         <input type="text" placeholder="Nom du personnage" />
@@ -93,6 +95,9 @@
                 <tr><th>Monnaie</th><th>Quantité</th></tr>
             </table>
         </fieldset>
+        <form action="" class="login_form modal" id="modal" style="display: none;">
+            <a href="#close-modal" rel="modal:close" class="close-modal ">Close</a>
+        </form>
 
     <script type="text/javascript">
         jQuery(document).ready(function(jQuery){
@@ -133,6 +138,23 @@
             });
             jQuery('#historique').on('change', function () {
                 creationPerso.selectHistorique(jQuery(this).val());
+            });
+
+            jQuery('.checkbox_langue').on('change', function (e) {
+                var restantes_selected = parseInt(jQuery('#langues_restantes').html());
+                var max_selected = parseInt(jQuery('#langues_max').html()) + 1;
+                var checked = jQuery('.checkbox_langue:checked').not(':disabled').length;
+                if (max_selected == checked) {
+                    e.preventDefault();
+                    jQuery(this).prop('checked', false);
+                    return false; 
+                } else {
+                    if (jQuery(this).is(':checked')) {
+                        jQuery('#langues_restantes').html(restantes_selected -1);
+                    } else {
+                        jQuery('#langues_restantes').html(restantes_selected +1);
+                    }
+                }
             });
 
             jQuery('.checkbox_competence').on('change', function (e) {

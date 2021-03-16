@@ -93,6 +93,7 @@ const races = {
                 'abilityBonuses' : {
                     'sag' : 1
                 },
+                'freeLanguages': 0,
                 'racialAbilities': {
                     0: "<strong>Créature des terres sauvages.</strong> Vous avez l'habitude de parcourir les espaces naturels. Vous obtenez l'avantage sur vos tests de Dextérité (Discrétion) et Sagesse (Survie) lorsque vous parcourez des espaces naturels à la lumière du jour ou des étoiles.",
                     1: "<strong>Artisans reconnus.</strong> Vous maîtrisez un type d'outils d'artisan de votre choix."
@@ -112,6 +113,7 @@ const races = {
             'commun',
             'gnome'
         ],
+        'freeLanguages': 0,
         'racialAbilities': {
             0: "<strong>Vision dans le noir.</strong> Habitué à la vie souterraine, vous avez une vision supérieure dans l'obscurité et dans la lumière faible. Dans un rayon de 18 mètres, vous pouvez voir dans une zone de lumière faible comme s'il s'agissait d'une lumière vive et dans l'obscurité comme s'il s'agissait d'une lumière faible. Par contre, vous ne distinguez pas les couleurs dans l'obscurité, seulement des nuances de gris.",
             1: "<strong>Ruse gnome.</strong> Vous bénéficiez d'un avantage pour tous les jets de sauvegarde d'Intelligence, Sagesse et Charisme contre la magie."
@@ -125,6 +127,7 @@ const races = {
                     'con': 1
                 },
                 'freeAbilityBonuses': 0,
+                'freeLanguages': 0,
                 'racialAbilities': {
                     0: "<strong>Connaissances en ingénierie.</strong> Quand vous faites un test d'Intelligence (Histoire) relatif aux objets magiques, alchimiques ou technologiques, et que vous disposez de la maîtrise de cette compétence, vous ajoutez le double de votre bonus de maîtrise au résultat du test au lieu de votre bonus de maîtrise normal.",
                     1: "<strong>Bricoleur.</strong> Vous maîtrisez les outils d'artisans (outils de bricoleur). Grâce à ces outils, vous pouvez passer 1 heure et dépenser pour 10 po de matériaux pour construire un mécanisme de taille très petite (CA 5, 1 pv). Ce mécanisme cesse de fonctionner au bout de 24 heures (sauf si vous passez 1 heure à le réparer) ou si vous utilisez une action pour le démanteler. Vous pouvez à ce moment récupérer les matériaux qui ont servi à sa construction. Vous pouvez avoir jusqu'à trois mécanismes fonctionnant en même temps.<br />Quand vous créez un mécanisme, vous avez le choix entre trois options :\
@@ -139,6 +142,7 @@ const races = {
                 'abilityBonuses': {
                     'dex': 1
                 },
+                'freeLanguages': 0,
                 'freeAbilityBonuses': 0,
                 'racialAbilities': {
                     0: "<strong>Sens aiguisés.</strong> Vos sens supérieurs vous permettent de suivre n'importe quelle piste. Vous bénéficiez d'un avantage à tous vos tests de Sagesse (Survie) effectués afin de pister une créature.",
@@ -151,12 +155,102 @@ const races = {
                 'abilityBonuses': {
                     'sag': 1
                 },
+                'freeLanguages': 0,
                 'freeAbilityBonuses': 0,
                 'racialAbilities': {
                     0: "<strong>Maître des illusions.</strong> Vous obtenez un avantage sur les jets de sauvegarde effectués afin de résister aux sorts d'illusion, ainsi qu'aux tests visant à discerner la présence d'une illusion déjà présente.",
                     1: "<strong>Amphibie.</strong> Vous êtes capable de respirer sous l'eau pendant une durée de 10 minutes au maximum. Au bout de ces 10 minutes, vous devez reprendre votre souffle à l'air libre.",
                     2: "<strong>Magie instinctive.</strong> Vous connaissez deux tours de magie que vous choisissez parmi la liste de sorts du barde. Votre caractéristique d'incantation pour ces sorts est la Sagesse."
                 }
+            }
+        }
+    },
+    'halfelin': {
+        'key': 'halfelin',
+        'label': 'Halfelin',
+        'abilityBonuses': {
+            'dex': 2
+        },
+        'freeAbilityBonuses': 0,
+        'speed': 7.5,
+        'languages': [
+            'commun',
+            'halfelin'
+        ],
+        'freeLanguages': 0,
+        'racialAbilities': {
+            0: "<strong>Chanceux.</strong> Quand vous faites un 1 avec le d20 d'un jet d'attaque, d'un test de caractéristique ou d'un jet de sauvegarde, vous pouvez relancer le dé. Mais vous devez utiliser le nouveau résultat du jet.",
+            1: "<strong>Brave.</strong> Vous bénéficiez d'un avantage sur les jets de sauvegarde contre la terreur.",
+            2: "<strong>Agilité halfeline.</strong> Vous pouvez traverser n'importe quel emplacement occupé par une créature plus grande que vous."
+        },
+        'variants': {
+            'halfelin_pied_leger': {
+                'key': 'halfelin_pied_leger',
+                'label': 'Halfelin pied-léger',
+                'abilityBonuses': {
+                    'cha': 1
+                },
+                'freeAbilityBonuses': 0,
+                'freeLanguages': 0,
+                'racialAbilities': {
+                    0: "<strong>Discrétion naturelle.</strong> Vous pouvez tenter de vous cacher même quand vous êtes seulement dissimulé par une créature qui fait une taille de plus que vous."
+                }
+            },
+            'halfelin_grand_sabot': {
+                'key': 'halfelin_grand_sabot',
+                'label': 'Halfelin grand-sabot',
+                'abilityBonuses': {
+                    'con': 1
+                },
+                'freeAbilityBonuses': 0,
+                'freeLanguages': 0,
+                'racialAbilities': {
+                    0: "<strong>Esprit pragmatique.</strong> Vous obtenez un avantage sur les tests de Sagesse (Perspicacité) lorsque l'on tente de vous mentir ou de vous baratiner. De plus, vous obtenez un avantage aux jets de sauvegarde contre les sorts de charme.",
+                    1: "<strong>Travailleur acharné.</strong> Vous obtenez la maîtrise d'un outil d'artisan au choix."
+                }
+            }
+        }
+    },
+    'humain': {
+        'key': 'humain',
+        'label': 'Humain',
+        'abilityBonuses': {
+            'for': 1,
+            'dex': 1,
+            'con': 1,
+            'int': 1,
+            'sag': 1,
+            'cha': 1
+        },
+        'freeAbilityBonuses': 0,
+        'speed': 9,
+        'languages': [
+            'commun'
+        ],
+        'freeLanguages': 1,
+        'racialAbilities': {},
+        'variants': {
+            'humain_competence': {
+                'key': 'humain_competence',
+                'label': 'Variante avec compétences',
+                'abilityBonuses': {
+                },
+                'freeAbilityBonuses': 4,
+                'freeCompetence': 2
+            },
+            'humain_don': {
+                'key': 'humain_don',
+                'label': 'Variantes avec Don',
+                'abilityBonuses': {
+                    'for': 0,
+                    'dex': 0,
+                    'con': 0,
+                    'int': 0,
+                    'sag': 0,
+                    'cha': 0
+                },
+                'freeAbilityBonuses': 3,
+                'freeDon': 1
             }
         }
     }
